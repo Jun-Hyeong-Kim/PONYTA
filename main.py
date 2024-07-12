@@ -94,7 +94,7 @@ def calculate_new_prior(model, data, u_node):
     model.eval() 
     output = model(data)[u_node].detach().cpu()
     output_softmax = F.softmax(output, dim=1)
-    pred = output_softmax[:, 0] > 0.5
+    pred = output_softmax[:, 0] > 0.9
     
     return sum(pred.numpy()) / len(u_node)
 
@@ -160,7 +160,6 @@ def run_PU(data, output_dir, hidden_channels, train_p_idx, train_u_idx, val_p_id
     lbp = LBP(lbp_graph, train_p_idx, num_states=2, device=device) 
 
     # Define node embeddings 
-    hidden_channels = hidden_channels
     node_embeds = torch.nn.Embedding(len(lbp.graph.features), hidden_channels).to(device)
 
     if gnn_type == 'GCN':
@@ -203,11 +202,10 @@ def run_PU(data, output_dir, hidden_channels, train_p_idx, train_u_idx, val_p_id
         test_loss, accuracy, precision, recall, f1, accuracy_pos, accuracy_neg, test_eval_output = test(model, data, beliefs, p_true_labels, val_p_idx, val_n_idx, device)
 
         test_accuracy = accuracy_pos
+        train_old_loss = train_new_loss
 
         log = 'Epoch: {:03d}, prior: {:.2f}, old loss: {:.4f}, new loss: {:.4f}, test loss: {:.4f}'
 
-        train_old_loss = train_new_loss
-        
         print(log.format(train_count, prior, train_old_loss, train_new_loss, test_loss))
         
         train_loss_list.append(train_new_loss)
@@ -345,7 +343,6 @@ else:
     print(f'pos_indices tensor length remain same since oringal length is {pos_indices.shape[0]}')
 
 
-
     
 ### NX to PYG for use in PU learning
 no_data_graph = nx.Graph()
@@ -359,13 +356,6 @@ data.x = torch.arange(data.num_nodes)
 for iteration in range(args.iter):
 
 
-    '''
-    Make directory name based on the time run the code
-    '''
-    
-    # korea_timezone = timezone(timedelta(hours=9))  # UTC+9
-    # current_time_korea = datetime.now(korea_timezone)
-    # dir_name = current_time_korea.strftime("%Y%m%d_%H%M%S")
     dir_name = f'iteration_{iteration}'
 
     
@@ -424,6 +414,7 @@ for iteration in range(args.iter):
         
         with open(hyperparameter_output_path, 'a') as file:
             file.write(f"NP Output: {np_output_path}\n")
+            
         np_output_file = np_output_path
     
     # '''
