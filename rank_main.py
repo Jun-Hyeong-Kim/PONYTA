@@ -12,7 +12,6 @@ import networkx as nx
 from sklearn.model_selection import train_test_split
 
 import rank_aggregation_func, rank_prgenes_func, rank_eval_func
-# from rank_eval_func import partial_roc, rank_evaluation
 
 
 parser = argparse.ArgumentParser()
