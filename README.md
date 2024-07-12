@@ -33,7 +33,7 @@ conda env create -f ponyta.yaml
  
 - `rank_main.py` : Run processing on rank outputs obtained from `main.py`. It first aggregated gene rank outputs using average rank aggregation. Aggregated gene rank subsequently used for extracting gene ranks for phenotype-related genes, considering as exceptional case when phenotype-related genes involved in positive genes used for PU learning which is top-ranked subset genes from either DEG analysis output (`deg_output_file`) and NP output (`np_output_file`). Finally, partial AUC value considering top _n_ negative genes ($AUC_n$) is evaluated to quantify ability of the algorithm on prioritization of phenotype-related genes.
   ```
-  python rank_main.py --ponyta_output /path/to/PONYTAoutput --pr_genes_path /path/to/txtfile --deg_output_path /path/to/DEGoutput --np_output_path /path/to/NPoutput --nx_network_path /path/to/Networkxfile --np_pos_genes_count 50 --n_auc_min 5 --n_auc_max 300
+  python rank_main.py --ponyta_output /path/to/PONYTAoutput --pr_genes_path /path/to/txtfile --deg_output_path /path/to/DEGoutput --np_output_path /path/to/NPoutput --nx_network_path /path/to/Networkxfile --np_pos_genes_count 50 --n_auc_min 5 --n_auc_max 300 --agg_method weight_dibra
   ```
   - `--ponyta_output` : Path to PONYTA output folder. The output folder should have output folders from each iteration.
   - `--pr_genes_path` : Path to phenotype-related genes _txt_ file. The _txt_ file considered to have vertical list of phenotype-related gene names, with each gene name on a separate line.
