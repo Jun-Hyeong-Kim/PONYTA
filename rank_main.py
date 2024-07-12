@@ -20,7 +20,7 @@ from rank_eval_func import partial_roc, rank_evaluation
 parser = argparse.ArgumentParser()
 
 # rank aggregation
-parser.add_argument('--pulsar_output', type=str, help='Path to PULSAR output folder')
+parser.add_argument('--ponyta_output', type=str, help='Path to PONYTA output folder')
 
 # rank PR-genes
 parser.add_argument('--pr_genes_path', type=str, help='Path to phenotype-related genes txt file')
@@ -40,8 +40,8 @@ args = parser.parse_args()
 
 # Rank Aggregation
 
-ko_output = [folder for folder in os.listdir(args.pulsar_output) if 'npgenes' in folder][0]
-ranks_output = os.path.join(args.pulsar_output, ko_output)
+ko_output = [folder for folder in os.listdir(args.ponyta_output) if 'npgenes' in folder][0]
+ranks_output = os.path.join(args.ponyta_output, ko_output)
 rank_aggregation(ranks_output)
 
 
