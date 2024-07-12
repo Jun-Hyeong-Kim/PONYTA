@@ -1,6 +1,7 @@
 # PONYTA
 PONYTA: prioritization of phenotype-related genes from mouse KO events using PU learning on a biological network
 
+<img width="1226" alt="image" src="https://github.com/user-attachments/assets/31120b78-f071-4d85-a86a-99bef05cd055">
 
 ## Environment
 Install `conda` environment
