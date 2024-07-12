@@ -42,4 +42,5 @@ conda env create -f ponyta.yaml
   - `--nx_network_path` : Path to Networkx file.
   - `--np_pos_genes_count` : Number of top-ranked NP genes used for positive genes.
   - `--n_auc_min` : Minimum value for _n_, number of top-ranked negative genes to consider for partial AUC value calculation. (default : 5)
-  - `--n_auc_max` : Maximum value for _n_, number of top-ranked negative genes to consider for partial AUC value calculation. (default : 300)  
+  - `--n_auc_max` : Maximum value for _n_, number of top-ranked negative genes to consider for partial AUC value calculation. (default : 300)
+  - `--agg_method`: Rank aggregation method to use. One of Weighted dibra, Median rank aggregation, Linear combination with Borda normalization and Majoritarian method with Condorcet Winners method can be given. (default : weight_dibra)
