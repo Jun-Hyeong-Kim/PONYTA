@@ -19,8 +19,8 @@ def partial_roc(rank_output_path, n, T):
                             'DEG Rank':99999999999,
                             'NP Rank':9999999999}])
 
-    
-    # n: negative_gene_nums_to_consider
+    if max(pos_gene_ranks) < n: 
+        pos_gene_ranks.append(9999999999)
     
     rank = pd.read_csv(rank_output_path)
     

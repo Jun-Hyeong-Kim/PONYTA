@@ -275,7 +275,7 @@ parser.add_argument('--csv_network', type=str, help='Path to CSV adjacency matri
 parser.add_argument('--deg_output_file', type=str, help='Path to DEG output file for KO gene. DEG output considered as already sorted as adjusted p-value ascending order, and DEGs are in first column')
 parser.add_argument('--np_output_file', type=str, default = None, help = 'NP output to use. If it is not provided, it will automatically perform network propagation and use its output')
 parser.add_argument('--deg_num', type=int, default=50, help='Number of DEG to use as positive genes')
-parser.add_argument('--np_num', type=int, default=100, help='Number of NP genes to use as positive genes')
+parser.add_argument('--np_num', type=int, default=50, help='Number of NP genes to use as positive genes')
 parser.add_argument('--gnn_type', type=str, default='GAT', help='Type of GNN to use')
 
 parser.add_argument('--lr', type=float, default=0.0001, help='Learning rate during training')

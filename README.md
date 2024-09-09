@@ -13,13 +13,14 @@ conda env create -f ponyta.yaml
 ## Usage
 
 - `main.py` : Run PU learning on network for gene prioritization. For each iteration of positive-unlabeled (PU) learning, it outputs prioritized gene ranks output for each fold.
+  - User Guidance : Start with the default values of top 50 differentially expressed genes (DEGs) and 50 network propagation (NP) genes. For customized applications, consider adjusting these thresholds during hyperparameter tuning to improce performance for your specific datasets.
   ```
-  python main.py --ko_gene KO_gene_name --deg_output_file /path/to/DEGoutput --np_output /path/to/NPoutput --deg_num --deg_num 100 --np_num 50 --nx_network /path/to/Networkxfile --csv_network /path/to/CSVfile
+  python main.py --ko_gene KO_gene_name --deg_output_file /path/to/DEGoutput --np_output /path/to/NPoutput --deg_num 50 --np_num 50 --nx_network /path/to/Networkxfile --csv_network /path/to/CSVfile
   ```
   - `--ko_gene` : Name of knock-out (KO) gene. 
   - `--deg_output_file` : Path to differentially expressed genes (DEGs) analysis output file for KO gene. DEG output considered as already sorted as adjusted p-value ascending order, and DEGs are in first column.
   - `--np_output_file` : Path to network propagation (NP) output file to used. If it is not provided (default : None), it will automatically perform network propagation and use its output.
-  - `--deg_num` : Number of DEGs to use as positive genes for PU learning. (default : 100)
+  - `--deg_num` : Number of DEGs to use as positive genes for PU learning. (default : 50)
   - `--np_num` : Number of NP genes to use as positive genes for PU learning. (default : 50)
   - `--nx_network` : Path to Networkx network file. Wil used for PU learning.
   - `--csv_network` : Path to CSV adjacency matrix. Will used for Network Propagation.
