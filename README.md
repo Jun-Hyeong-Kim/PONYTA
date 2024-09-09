@@ -13,10 +13,11 @@ conda env create -f ponyta.yaml
 ## Usage
 
 - `main.py` : Run PU learning on network for gene prioritization. For each iteration of positive-unlabeled (PU) learning, it outputs prioritized gene ranks output for each fold.
-  - User Guidance : Start with the default values of top 50 differentially expressed genes (DEGs) and 50 network propagation (NP) genes. For customized applications, consider adjusting these thresholds during hyperparameter tuning to improce performance for your specific datasets.
+
   ```
   python main.py --ko_gene KO_gene_name --deg_output_file /path/to/DEGoutput --np_output /path/to/NPoutput --deg_num 50 --np_num 50 --nx_network /path/to/Networkxfile --csv_network /path/to/CSVfile
   ```
+  - User Guidance : Start with the default values of top 50 differentially expressed genes (DEGs) and 50 network propagation (NP) genes. For customized applications, consider adjusting these thresholds during hyperparameter tuning to improce performance for your specific datasets.
   - `--ko_gene` : Name of knock-out (KO) gene. 
   - `--deg_output_file` : Path to differentially expressed genes (DEGs) analysis output file for KO gene. DEG output considered as already sorted as adjusted p-value ascending order, and DEGs are in first column.
   - `--np_output_file` : Path to network propagation (NP) output file to used. If it is not provided (default : None), it will automatically perform network propagation and use its output.
